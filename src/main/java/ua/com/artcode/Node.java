@@ -20,6 +20,11 @@ public final class Node<T> implements A<T> {
         return next;
     }
 
+    @Override
+    public boolean hasNext() {
+        return next != null;
+    }
+
     public void showValue(){
         System.out.print(value);
     }

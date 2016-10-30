@@ -1,5 +1,7 @@
 package ua.com.artcode;
 
+import java.util.ArrayList;
+
 public class ListUtils {
 
     public static A<String> createStringList() {
@@ -19,8 +21,25 @@ public class ListUtils {
         return head;
     }
 
-    public static<T> A<T> reversion(A<T> head) {
-//        todo write your code
-        return head;
+    public static <T> A<T> reversion(A<T> head) {
+
+        ArrayList<A<T>> nodes = new ArrayList<>();
+        A<T> current = head;
+        while (true) {
+            nodes.add(current);
+            if(!current.hasNext()) break;
+            current = current.getNext();
+        }
+        A<T> next;
+        A<T> first = current;
+        for (int i = nodes.size() - 2; i >= 0; i--) {
+                next = nodes.get(i);
+                current.setNext(next);
+                current = current.getNext();
+            if(i == 0){
+                current.setNext(null);
+            }
+        }
+        return first;
     }
 }
